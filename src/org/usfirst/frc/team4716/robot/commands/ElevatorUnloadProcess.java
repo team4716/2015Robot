@@ -8,8 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ElevatorUnloadProcess extends CommandGroup {
     
     public  ElevatorUnloadProcess() {
-    	addSequential(new ElevatorUp(0.7,-300));
+    	addSequential(new ElevatorUp(-0.7,160));
     	addSequential(new HoldSystemRelease());
+    	addSequential(new ElevatorDown(0.7,5));
     	addSequential(new LiftPush());
         // Add Commands here:
         // e.g. addSequential(new Command1());

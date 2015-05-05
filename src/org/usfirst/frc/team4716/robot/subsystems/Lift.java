@@ -12,12 +12,12 @@ import org.usfirst.frc.team4716.robot.commands.LiftOff;
 */
 public class Lift extends Subsystem {
 	
-	boolean pulled = false;
+	boolean pulled = true;
 	DoubleSolenoid lift;
 	
 	public Lift() {
 		//objects
-		lift = new DoubleSolenoid(2,3);
+		lift = new DoubleSolenoid(0,1);
 		
 		//live window
 		LiveWindow.addActuator("DriveTrain", "Back Right CIM", lift);

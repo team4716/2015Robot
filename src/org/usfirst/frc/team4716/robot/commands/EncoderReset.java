@@ -7,42 +7,35 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ManualElevDown extends Command {
+public class EncoderReset extends Command {
 
-    public ManualElevDown() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.elevator);
+    public EncoderReset() {
+        requires(Robot.elevator);
+        setTimeout(0.5);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(Robot.elevator.limitGet() == false){
-    	Robot.elevator.moveElevCIM(0.7);
-    	}
+    	Robot.elevator.encoderReset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.elevator.limitGet() == true){
-    		return true;
-    	}else{
-        return false;
-    	}
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.elevator.moveElevCIM(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.elevator.moveElevCIM(0);
     }
 }

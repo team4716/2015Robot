@@ -18,7 +18,7 @@ public class ElevatorUp extends Command {
     }
     
     protected void initialize() {
-    	Robot.elevator.smartMoveElevCIM(speed, dist);
+    	Robot.elevator.moveElevCIM(speed);
     	System.out.println("Elevator Going Up");
     }
 
@@ -26,7 +26,7 @@ public class ElevatorUp extends Command {
     }
 
     protected boolean isFinished() {
-        if (Robot.elevator.getEncoderDistance() <= dist){
+        if (Robot.elevator.getEncoderDistance() >= dist){
         	return true;
         } else {
         	return false;

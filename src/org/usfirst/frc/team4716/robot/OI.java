@@ -1,13 +1,8 @@
 package org.usfirst.frc.team4716.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team4716.robot.commands.Drive_Forward_Manul;
 import org.usfirst.frc.team4716.robot.commands.ElevatorLiftProcess;
 import org.usfirst.frc.team4716.robot.commands.ElevatorUnloadProcess;
-import org.usfirst.frc.team4716.robot.commands.ElevatorUp;
 import org.usfirst.frc.team4716.robot.commands.HoldSystemLock;
 import org.usfirst.frc.team4716.robot.commands.HoldSystemRelease;
 import org.usfirst.frc.team4716.robot.commands.LiftPull;
@@ -15,6 +10,11 @@ import org.usfirst.frc.team4716.robot.commands.LiftPush;
 import org.usfirst.frc.team4716.robot.commands.ManualElevDown;
 import org.usfirst.frc.team4716.robot.commands.ManualElevUp;
 import org.usfirst.frc.team4716.robot.commands.ResetRobot;
+import org.usfirst.frc.team4716.robot.commands.SpeedCommand;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * 
@@ -41,16 +41,20 @@ public class OI {
 	JoystickButton sbut5 = new JoystickButton(stick2, 5);
 	JoystickButton sbut6 = new JoystickButton(stick2, 6);
 	JoystickButton sbut7 = new JoystickButton(stick2, 7);
-	
-	JoystickButton A = new JoystickButton(control, RobotMap.BUTTON_A);
-	JoystickButton B = new JoystickButton(control, RobotMap.BUTTON_B);
-	JoystickButton X = new JoystickButton(control, RobotMap.BUTTON_X);
-	JoystickButton Y = new JoystickButton(control, RobotMap.BUTTON_Y);
-	JoystickButton START = new JoystickButton(control, RobotMap.BUTTON_START);
-	JoystickButton BACK = new JoystickButton(control, RobotMap.BUTTON_BACK);
-	JoystickButton RIGHT_TRIGGER = new JoystickButton(control, RobotMap.BUMPER_R);
-	JoystickButton LEFT_TRIGGER = new JoystickButton(control, RobotMap.BUMPER_L);
-	JoystickButton xbut7 = new JoystickButton(control, 7);
+	JoystickButton sbut8 = new JoystickButton(stick2, 8);
+	JoystickButton sbut9 = new JoystickButton(stick2, 9);
+	JoystickButton sbut10 = new JoystickButton(stick2,10);
+	JoystickButton sbut11 = new JoystickButton(stick2, 11);
+//	
+//	JoystickButton A = new JoystickButton(control, RobotMap.BUTTON_A);
+//	JoystickButton B = new JoystickButton(control, RobotMap.BUTTON_B);
+//	JoystickButton X = new JoystickButton(control, RobotMap.BUTTON_X);
+//	JoystickButton Y = new JoystickButton(control, RobotMap.BUTTON_Y);
+//	JoystickButton START = new JoystickButton(control, RobotMap.BUTTON_START);
+//	JoystickButton BACK = new JoystickButton(control, RobotMap.BUTTON_BACK);
+//	JoystickButton RIGHT_TRIGGER = new JoystickButton(control, RobotMap.BUMPER_R);
+//	JoystickButton LEFT_TRIGGER = new JoystickButton(control, RobotMap.BUMPER_L);
+//	JoystickButton xbut7 = new JoystickButton(control, 7);
 	
 	JoystickButton tbut1 = new JoystickButton(test, 1);
 	JoystickButton tbut2 = new JoystickButton(test, 2);
@@ -73,28 +77,35 @@ public class OI {
 		sbut1.whenPressed(new ElevatorLiftProcess());
 		sbut2.whenPressed(new ElevatorUnloadProcess());
 		sbut3.whenPressed(new ResetRobot());
-		sbut4.whenPressed(new ElevatorUp(0.6,-200));
-		sbut5.whenPressed(new ElevatorUp(-0.6, -200));
+		sbut4.whenPressed(new HoldSystemLock()); // Moves Tilt Forward
+		sbut5.whenPressed(new HoldSystemRelease()); // Moves Tilt back
+		sbut6.whenPressed(new LiftPull()); //tilt pull
+		sbut7.whenPressed(new LiftPush()); //tilt push
+		sbut8.whileHeld(new ManualElevUp());
+		sbut9.whileHeld(new ManualElevDown());
+		sbut10.whenPressed(new SpeedCommand(false));
+		sbut11.whenPressed(new SpeedCommand(true));
 		
 		
 		tbut1.whenPressed(new ElevatorLiftProcess());
-		tbut2.whenPressed(new HoldSystemLock());
-		tbut3.whenPressed(new HoldSystemRelease());
+		tbut2.whenPressed(new HoldSystemLock()); // Moves Tilt Forward
+		tbut3.whenPressed(new HoldSystemRelease()); // Moves Tilt back
 		//tbut4.whenPressed(new ElevatorUp());
 
-		tbut6.whenPressed(new LiftPull());
-		tbut7.whenPressed(new LiftPush());
+		tbut6.whenPressed(new LiftPull()); //tilt pull
+		tbut7.whenPressed(new LiftPush()); //tilt push
 		tbut8.whileHeld(new ManualElevUp());
 		tbut9.whileHeld(new ManualElevDown());
 		
-		A.whenPressed(new ElevatorLiftProcess());
-//		B.whenPressed(new ElevatorUp());
-//		X.whenPressed(new ElevatorDown());
-		//Y.whenPressed(0);
-		RIGHT_TRIGGER.whenPressed(new LiftPush());
-		LEFT_TRIGGER.whenPressed(new LiftPull());
-//		START.whenPressed(new PIDSetPointElevator(10.0));
-//		BACK.whenPressed(new PIDSetPointElevator(0.0));
+//		A.whenPressed(new ElevatorLiftProcess());
+////		B.whenPressed(new ElevatorUp());
+		
+////		X.whenPressed(new ElevatorDown());
+//		//Y.whenPressed(0);
+//		RIGHT_TRIGGER.whenPressed(new LiftPush());
+//		LEFT_TRIGGER.whenPressed(new LiftPull());
+////		START.whenPressed(new PIDSetPointElevator(10.0));
+////		BACK.whenPressed(new PIDSetPointElevator(0.0));
 		
 		SmartDashboard.putData("Elevator Lift Process", new ElevatorLiftProcess());
 		SmartDashboard.putData("Hold System Lock", new HoldSystemLock());

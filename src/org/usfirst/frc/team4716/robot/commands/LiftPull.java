@@ -14,6 +14,7 @@ public class LiftPull extends Command {
     }
 
     protected void initialize() {
+    	//Robot.lift.LiftOff();
     	Robot.lift.LiftPull();
     }
 
@@ -21,7 +22,11 @@ public class LiftPull extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+    	if(Robot.lift.getPulledPosition() == false){
+            return true;
+        	}else{
+        		return false;
+        	}
     }
 
     protected void end() {

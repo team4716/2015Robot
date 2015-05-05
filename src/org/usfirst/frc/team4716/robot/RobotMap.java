@@ -127,4 +127,9 @@ public class RobotMap {
     
     
     
+   // Motor Factor
+    public static double mFactor = 0.9;
+    
+    
+    
 }

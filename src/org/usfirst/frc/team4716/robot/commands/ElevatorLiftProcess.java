@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ElevatorLiftProcess extends CommandGroup {
     
     public  ElevatorLiftProcess() {
-    	addSequential(new ElevatorUp(0.9,1400));
     	addParallel(new HoldSystemRelease());
-    	addSequential(new StopElevator());
+    	addSequential(new ElevatorUp(-0.9,580));
+    	//addSequential(new Wait(1.0));
     	addSequential(new HoldSystemLock());
-    	addSequential(new ElevatorUp(-0.9,0));
-    	addSequential(new StopElevator());
+    	addSequential(new ElevatorDown(0.9,10));
+    	//addSequential(new StopElevator());
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

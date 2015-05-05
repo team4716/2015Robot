@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4716.robot.commands.AutoDoNothing;
+import org.usfirst.frc.team4716.robot.commands.AutoMoveBinForward;
 import org.usfirst.frc.team4716.robot.commands.AutoMoveForwardStraight;
 import org.usfirst.frc.team4716.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4716.robot.subsystems.Elevator;
@@ -57,7 +58,7 @@ public class Robot extends IterativeRobot {
 		//camera
 		server1 = CameraServer.getInstance();		
 		server1.setQuality(30);
-		server1.startAutomaticCapture("cam0");
+		//server1.startAutomaticCapture("cam0");
 		
 		//timer
 		gameTimer = new Timer();
@@ -71,6 +72,7 @@ public class Robot extends IterativeRobot {
 		autoChooser2 = new SendableChooser();
         autoChooser2.addDefault("Auto Nothing", new AutoDoNothing());
         autoChooser2.addObject("Auto Move Straight", new AutoMoveForwardStraight());
+        autoChooser2.addObject("Auto Move Bin Straight", new AutoMoveBinForward());
         SmartDashboard.putData(Scheduler.getInstance());
         SmartDashboard.putData("AutoMode Chooser", autoChooser2);
         

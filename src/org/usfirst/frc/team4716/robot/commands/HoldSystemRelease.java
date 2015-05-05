@@ -21,7 +21,11 @@ public class HoldSystemRelease extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+    	if(Robot.holdsystem.getHoldPosition() == false){
+        return true;
+    	}else{
+    		return false;
+    	}
     }
 
     protected void end() {

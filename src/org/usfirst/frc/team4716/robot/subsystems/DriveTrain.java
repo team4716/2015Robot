@@ -98,7 +98,7 @@ public class DriveTrain extends Subsystem {
     
         
     	public void arcadeDrive(double x, double y){
-    		drive.arcadeDrive(x,y);
+    		drive.arcadeDrive(x*RobotMap.mFactor,y*RobotMap.mFactor);
     }
 
     
@@ -242,6 +242,7 @@ public class DriveTrain extends Subsystem {
     		SmartDashboard.putNumber("Right Drive Encoder", -leftDriveEncoder.getDistance());
     		SmartDashboard.putNumber("Left Drive Encoder", rightDriveEncoder.getDistance());
     		SmartDashboard.putNumber("Delta Encoder",getDelta());
+    		SmartDashboard.putNumber("Drive Speeed", RobotMap.mFactor);
     }
 }
 

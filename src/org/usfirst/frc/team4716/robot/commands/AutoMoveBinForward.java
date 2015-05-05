@@ -5,13 +5,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class ResetRobot extends CommandGroup {
+public class AutoMoveBinForward extends CommandGroup {
     
-    public  ResetRobot() {
-    	addSequential(new ElevatorDown(0.6, 25));
-    	addSequential(new EncoderReset());
-    	addSequential(new LiftPull());
-    	addSequential(new HoldSystemRelease());
+    public  AutoMoveBinForward() {
+    	
+    	addSequential(new Drive_Forward_Manul(5.0,-0.7));
+    	addSequential(new Drive_Forward_Manul(0.1,0));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

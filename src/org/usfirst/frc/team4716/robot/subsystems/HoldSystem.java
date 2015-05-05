@@ -3,6 +3,7 @@ package org.usfirst.frc.team4716.robot.subsystems;
 import org.usfirst.frc.team4716.robot.commands.HoldSystemOff;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,8 +18,8 @@ public class HoldSystem extends Subsystem {
 	
 	public HoldSystem() {
 		//objects
-		holdpiston = new DoubleSolenoid(0,1);
-		
+		holdpiston = new DoubleSolenoid(2,3);
+		//holdpiston = new Solenoid(0);
 		//live window
 		LiveWindow.addActuator("Hold System", "Solenoid Status", holdpiston);
 	}
@@ -35,7 +36,7 @@ public class HoldSystem extends Subsystem {
     //setters
     public void HoldOff() {
     	// Shut off both double solenoids
-    	holdpiston.set(DoubleSolenoid.Value.kOff);
+    	//holdpiston.set(true);
     }
     
     public void HoldLock() {

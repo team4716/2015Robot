@@ -21,7 +21,11 @@ public class HoldSystemLock extends Command {
     }
 
     protected boolean isFinished() {
+    	if(Robot.holdsystem.getHoldPosition() == true){
+    		return true;
+    	}else{
         return false;
+    	}
     }
 
     protected void end() {
